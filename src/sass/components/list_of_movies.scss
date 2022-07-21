@@ -1,0 +1,50 @@
+ul.list_of_movies {
+    @include flex_row;
+
+    .movie {
+        background-color: $black_bold;
+        border-radius: 10px;
+        padding-bottom: 20px;
+        box-shadow: 5px 5px 20px -14px black;
+        max-width: 400px;
+        @include flex_column;
+        
+
+        picture {
+            position: relative;
+
+            img {
+                width: 100%;
+                border-radius: 10px;
+                transition: all 0.1s ease-in-out;
+                border: 1px solid transparent;
+                -webkit-mask-image: -webkit-gradient( left top, left bottom, 
+                    color-stop(0.00,  rgba(0,0,0,1)),
+                    color-stop(0.35,  rgba(0,0,0,1)),
+                    color-stop(0.50,  rgba(0,0,0,1)),
+                    color-stop(0.65,  rgba(0,0,0,1)),
+                    color-stop(0.85,  rgba(0,0,0,0.6)),
+                    color-stop(1.00,  rgba(0,0,0,0)))
+            }
+        }
+
+        .movie-content {
+            width: 100%;
+            padding: 0 10px;
+            text-align: center;
+
+            h1 {
+                font-weight: 100;
+                margin-bottom: 10px;
+            }
+
+            .votes {
+                color: $blue;
+            }
+        }
+
+        a.button {
+            margin-top: 30px;
+        }
+    }
+}

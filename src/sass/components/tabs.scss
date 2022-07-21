@@ -1,0 +1,17 @@
+ul.tabs {
+    @include flex_row;
+    border: 1px solid $blue;
+    border-radius: 5px;
+   
+    li {
+        a {
+            cursor: default;
+            display: block;
+            padding: 10px;
+            
+            &.selected, &:hover {
+                background-color: $blue;
+            }
+        }
+    }
+}

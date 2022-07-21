@@ -1,0 +1,8 @@
+.home {
+    height: 100vh;
+    @include flex_column;
+
+    ul.tabs {
+        margin-bottom: 10px;
+    }
+}
