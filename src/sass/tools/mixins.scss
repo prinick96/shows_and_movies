@@ -1,8 +1,8 @@
-@mixin flex_row($justify: center) {
+@mixin flex_row($align: center) {
     display: flex;
-    justify-content: $justify;
+    justify-content: center;
     align-content: center;
-    align-items: center;
+    align-items: $align;
     flex-direction: row;
 }
 

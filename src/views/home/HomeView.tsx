@@ -18,7 +18,8 @@ interface HomeViewDependencies {
 function HomeView(dep : HomeViewDependencies) {
 	// loading page status
 	const [loading, setLoading] = useState(true)
-	// the actual tab, movies/shows list
+	
+	// the current tab, movies/shows list
 	const [movie, setMovie] = useState(true)
 
 	// list of all movies and shows from the api
@@ -70,15 +71,15 @@ function HomeView(dep : HomeViewDependencies) {
 		)
 	}
 
-	// it the movies are loaded
+	// if the movies are loaded
 	return (
 		<section className="container">
             <div className="home">
 				<TabMovieSelector changeTab={handleChangeTab} movie={movie} />
 
 				{movie
-				? <ListOfMovies movies={movies} actualMovie={actualMovie} changeMovie={handleChangeMovie}></ListOfMovies>
-				: <ListOfShows shows={shows}  actualShow={actualShow} changeShow={handleChangeShow}></ListOfShows>}
+				? <ListOfMovies movies={movies} actualMovie={actualMovie} changeMovie={handleChangeMovie} />
+				: <ListOfShows shows={shows}  actualShow={actualShow} changeShow={handleChangeShow} />}
             </div>
 		</section>
 	)

@@ -1,7 +1,6 @@
 // props for the picture uri
 interface PictureProps {
     // size in px of image 
-    // available: 45, 92, 185, 300, 500, 700, 1280
     size: number
     // path of image
     path: string
