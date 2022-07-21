@@ -6,6 +6,7 @@ const defaultProps: LoadingProps = {
     page : false,
 }
 
+// just loading status animation
 const Loading = (props : LoadingProps) => {
     return (
         <div className={`loading ${props.page ? 'page' : ''}`}>

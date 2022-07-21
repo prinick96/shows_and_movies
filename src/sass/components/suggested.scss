@@ -1,0 +1,47 @@
+.suggested {
+    margin-top: 30px;
+    
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .list-suggested {
+        @include flex_row;
+
+        li {
+            margin-right: 10px;
+
+            &:last-of-type {
+                margin-right: 0;
+            }
+
+            .suggested-item {
+                picture {
+                    img {
+                        border-radius: 10px;
+                        filter: brightness(0.7);
+                        transition: all 0.2s ease-in-out;
+                        cursor: pointer;
+        
+                        &:hover {
+                            filter: brightness(1);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // mobile
+    @media only screen and (max-width: 575px) {
+        .list-suggested {
+            flex-direction: column;
+
+            li {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+        }
+    }
+}

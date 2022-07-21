@@ -1,10 +1,10 @@
 import { Link } from "wouter"
-import useCarrousel from "../hooks/carrousel"
-import { Show } from "../types/show"
-import Picture from "./Picture"
-import ShortInfo from "./ShortInfo"
+import useCarrousel from "../../hooks/carrousel"
+import { Show } from "../../types/show"
+import Picture from "../commons/Picture"
+import ShortInfo from "../commons/ShortInfo"
 
-// p for this component
+// props for this component
 interface ListOfShowsProps {
 	shows: Array<Show>
     actualShow: number

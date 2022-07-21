@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react"
+import { useCallback, useEffect, useState } from "react"
 import { Link, useLocation } from "wouter"
-import Backdrop from "../../components/Backdrop"
-import DetailContent from "../../components/DetailContent"
-import Loading from "../../components/Loading"
-import Picture from "../../components/Picture"
-import Votes from "../../components/Votes"
+import Backdrop from "../../components/commons/Backdrop"
+import DetailContent from "../../components/commons/DetailContent"
+import Loading from "../../components/commons/Loading"
+import Picture from "../../components/commons/Picture"
+import SuggestedShows from "../../components/shows/SuggestedShows"
+import Votes from "../../components/commons/Votes"
 import { IShows } from "../../services/shows"
 import { Show } from "../../types/show"
 
@@ -27,25 +28,35 @@ function DetailShowView(dep: DetailShowViewDependencies) {
 	// loading page status
 	const [loading, setLoading] = useState(true)
 
+	// id of current show
+	const [idShow, setIdShow] = useState(dep.id)
+
 	// the current movie
 	const [show, setShow] = useState({} as Show)
 
-	// get the movie
+	// get the show
 	const getShow = async () => {
 		try {
-			const result = await dep.shows.getShowDetailsById(dep.id)
+			setLoading(true)
+			const result = await dep.shows.getShowDetailsById(idShow)
 			setShow(result)
 		} catch(error) {
 			setLocation('/')
+		} finally {
+			setLoading(false)
 		}
-        
-		setLoading(false)
     }
+
+	// new id show
+	const handleChangeIdShow = useCallback((id : number) => {
+		setLocation('/show/' + id)
+		setIdShow(id)
+	}, [])
 
 	// load show
 	useEffect(() => {
 		getShow()
-	}, [])
+	}, [idShow])
 
 	// if the show is loading
 	if (loading) {
@@ -76,10 +87,12 @@ function DetailShowView(dep: DetailShowViewDependencies) {
 
 					<Votes vote_average={show.vote_average} vote_count={show.vote_count} />
 
-					<Link to="/" className="button">Back</Link>
+					<Link to="/" className="button">Home</Link>
 				</div>
 			</div>
-		
+			
+			{/* it have .container inside */}
+			<SuggestedShows idShow={show.id} genres={show.genres} shows={dep.shows} selectIdShow={handleChangeIdShow} />
 		</section>
 	)
 }

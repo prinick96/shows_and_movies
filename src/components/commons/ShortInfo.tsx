@@ -5,6 +5,7 @@ interface ShortInfoProps {
     vote_average: number
 }
 
+// show the short info in home carrousel for movie/show
 function ShortInfo(props: ShortInfoProps) {
     return (
         <div className="short-content">

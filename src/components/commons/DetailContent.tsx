@@ -13,6 +13,7 @@ interface DetailContentProps {
 	detail : DetailContentInfoObject
 }
 
+// show the detail content of a movie/show
 function DetailContent(p : DetailContentProps) {
   return (
     <div className="content">

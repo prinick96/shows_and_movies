@@ -4,7 +4,8 @@ import { Genre } from "../types/genre"
 const transformListOfGenresToString = (list_of_genres: Array<Genre>) : string => {
     let ids = list_of_genres.map((genre) => genre.id)
     
-    return ids.toString()
+    // we need only provide 2 max genres, for get variety
+    return ids.slice(0, 2).toString()
 }
 
 export default transformListOfGenresToString

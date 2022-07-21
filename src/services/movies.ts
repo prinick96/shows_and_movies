@@ -30,7 +30,7 @@ export class Movies implements IMovies {
     // get the related movies from a genres list
     getRelatedMoviesByGenres = async (list_of_genres: Array<Genre>) : Promise<any> => {
         const genres = transformListOfGenresToString(list_of_genres)
-        const movies = await moviedb.get('discover/movie?with_genres=' + genres)
+        const movies = await moviedb.get('discover/movie?&with_genres=' + genres)
         const response = await movies.data
         
         return response

@@ -3,6 +3,7 @@ interface BackdropProps {
     path: string
 }
 
+// show the back drop image in background
 function Backdrop(props : BackdropProps) {
     const uri = 'https://image.tmdb.org/t/p/w1280' + props.path
 

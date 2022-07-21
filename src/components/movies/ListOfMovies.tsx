@@ -1,10 +1,10 @@
 import { Link } from "wouter"
-import useCarrousel from "../hooks/carrousel"
-import { Movie } from "../types/movie"
-import Picture from "./Picture"
-import ShortInfo from "./ShortInfo"
+import useCarrousel from "../../hooks/carrousel"
+import { Movie } from "../../types/movie"
+import Picture from "../commons/Picture"
+import ShortInfo from "../commons/ShortInfo"
 
-// p for this component
+// props for this component
 interface ListOfMoviesProps {
 	movies: Array<Movie>
     actualMovie: number
