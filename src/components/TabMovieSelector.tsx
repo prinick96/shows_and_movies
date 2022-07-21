@@ -1,5 +1,5 @@
 interface TabMovieSelectorProps {
-    changeTab: any,
+    changeTab: any
     movie: boolean
 }
 

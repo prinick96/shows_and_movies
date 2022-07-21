@@ -7,7 +7,7 @@ interface ShortInfoProps {
 
 function ShortInfo(props: ShortInfoProps) {
     return (
-        <div className="movie-content">
+        <div className="short-content">
             <h1 className="title">{props.title}</h1>
             <span className="votes">⭐ {props.vote_average} of 10</span>
         </div>
