@@ -48,7 +48,7 @@ function SuggestedMovies(dep: SuggestedMoviesDependencies) {
                         {
                             movies.map((m) => {
                                 return (
-                                    <li key={m.id}>
+                                    <li key={m.id} className={m.id == dep.idMovie ? 'display-none' : ''}>
                                         <div className="suggested-item" onClick={() => handleChangeIdMovie(m.id)}>
                                             <Picture size={185} path={m.poster_path} />
                                         </div>
