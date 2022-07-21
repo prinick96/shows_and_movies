@@ -7,6 +7,9 @@ import { IMovies } from "../../services/movies"
 import { IShows } from "../../services/shows"
 import { Movie } from "../../types/movie"
 import { Show } from "../../types/show"
+import { useItemDispatch, useItemSelector } from "../../store/hooks"
+import { setLastMovieSeen } from "../../store/slices/movies"
+import { setLastShowSeen } from "../../store/slices/shows"
 
 // dependencies for this view
 interface HomeViewDependencies {
@@ -27,8 +30,11 @@ function HomeView(dep : HomeViewDependencies) {
 	const [shows, setShows] = useState([] as Array<Show>)
 	
 	// current movie and show, showing in the carrousel
-	const [actualMovie, setActualMovie] = useState(0)
-	const [actualShow, setActualShow] = useState(0)
+	const actualMovie = useItemSelector((state) => state.movies.lastMovieSeen)
+	const actualShow = useItemSelector((state) => state.shows.lastShowSeen)
+	const dispatch = useItemDispatch()
+	//const [actualMovie, setActualMovie] = useState(0)
+	//const [actualShow, setActualShow] = useState(0)
 
 	// get the movies
 	const getMovies = async () => {
@@ -56,13 +62,13 @@ function HomeView(dep : HomeViewDependencies) {
 
 	// change current movie in carrousel
 	const handleChangeMovie = useCallback((movie : number) => {
-		setActualMovie(movie)
-	}, [])
+		dispatch(setLastMovieSeen(movie))
+	}, [dispatch])
 
 	// change current show in carrousel
 	const handleChangeShow = useCallback((show : number) => {
-		setActualShow(show)
-	}, [])
+		dispatch(setLastShowSeen(show))
+	}, [dispatch])
 
 	// if the movies are loading
 	if (loading) {
