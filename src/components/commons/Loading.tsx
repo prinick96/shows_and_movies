@@ -8,8 +8,12 @@ const defaultProps: LoadingProps = {
 
 // just loading status animation
 const Loading = (props : LoadingProps) => {
+    // build class name
+    let pageClass = 'loading'
+    pageClass += props.page ? 'page' : ''
+
     return (
-        <div className={`loading ${props.page ? 'page' : ''}`}>
+        <div className={pageClass}>
             <div className="lds-ripple">
                 <div></div>
                 <div></div>

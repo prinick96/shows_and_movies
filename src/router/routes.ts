@@ -12,7 +12,7 @@ import ErrorView from "../views/error/ErrorView"
 interface Dependencies {
     [key: string] : any
 }
-interface Routes {
+export interface Routes {
     path: string|undefined
     name: string
     dependencies: Dependencies

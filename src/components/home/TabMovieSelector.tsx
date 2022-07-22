@@ -10,16 +10,19 @@ function TabMovieSelector(props : TabMovieSelectorProps) {
 	const handleChangeTab = (is_movie : boolean) => {
 		props.changeTab(is_movie)
 	}
+	
+	const movie_class = props.movie ? 'selected' : ''
+	const show_class = props.movie ? '' : 'selected'
 
 	return (
 		<ul className="tabs">
 			<li>
-				<a onClick={() => handleChangeTab(true)} className={props.movie ? 'selected' : ''}>
+				<a onClick={() => handleChangeTab(true)} className={movie_class}>
 					Movies
 				</a>
 			</li>
 			<li>
-				<a onClick={() => handleChangeTab(false)} className={props.movie ? '' : 'selected'}>
+				<a onClick={() => handleChangeTab(false)} className={show_class}>
 					Shows
 				</a>
 			</li>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { Link, useLocation } from "wouter"
 import Backdrop from "../../components/commons/Backdrop"
 import DetailContent from "../../components/commons/DetailContent"
@@ -31,6 +31,11 @@ function DetailShowView(dep: DetailShowViewDependencies) {
 	// id of current show
 	const [idShow, setIdShow] = useState(dep.id)
 
+	// catch route change
+	if (idShow != dep.id) {
+		setIdShow(dep.id)
+	}
+
 	// the current movie
 	const [show, setShow] = useState({} as Show)
 
@@ -46,12 +51,6 @@ function DetailShowView(dep: DetailShowViewDependencies) {
 			setLoading(false)
 		}
     }
-
-	// new id show
-	const handleChangeIdShow = useCallback((id : number) => {
-		setLocation('/show/' + id)
-		setIdShow(id)
-	}, [])
 
 	// load show
 	useEffect(() => {
@@ -92,7 +91,7 @@ function DetailShowView(dep: DetailShowViewDependencies) {
 			</div>
 			
 			{/* it have .container inside */}
-			<SuggestedShows idShow={show.id} genres={show.genres} shows={dep.shows} selectIdShow={handleChangeIdShow} />
+			<SuggestedShows idShow={show.id} genres={show.genres} shows={dep.shows} />
 		</section>
 	)
 }

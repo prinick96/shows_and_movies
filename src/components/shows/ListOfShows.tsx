@@ -16,7 +16,8 @@ function ListOfShows(p: ListOfShowsProps) {
         handlePrevItem,
         handleNextItem,
         canShowNextBtn,
-        canShowPrevBtn
+        canShowPrevBtn,
+        className
     } = useCarrousel(p.actualShow, p.shows.length, p.changeShow)
 
 	return (
@@ -27,8 +28,8 @@ function ListOfShows(p: ListOfShowsProps) {
                 {
                     p.shows.map((m, i) => {
                         return (
-                            <li key={m.id} className={p.actualShow != i ? 'display-none' : ''}>
-                                <div className="movie">
+                            <li key={m.id} className={className(i)}>
+                                <div className="show">
                                     <Picture size={500} path={m.poster_path} />
                                     <ShortInfo title={m.name} vote_average={m.vote_average} />
                                     <Link to={'/show/' + m.id} className="button">Select Show</Link>

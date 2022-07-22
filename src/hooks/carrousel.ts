@@ -23,10 +23,16 @@ export default function useCarrousel(item : number, total : number, changer: any
         return item == 0 ? 'no-show' : ''
     }
 
+    // define if the element can showed
+    const className = (index : number) : string => {
+        return item != index ? 'display-none' : ''
+    }
+
     return {
         handlePrevItem,
         handleNextItem,
         canShowNextBtn,
-        canShowPrevBtn
+        canShowPrevBtn,
+        className
     }
 }

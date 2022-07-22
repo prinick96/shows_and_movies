@@ -15,20 +15,22 @@ interface DetailContentProps {
 
 // show the detail content of a movie/show
 function DetailContent(p : DetailContentProps) {
-  return (
-    <div className="content">
-      	<h1 className="title">{p.detail.title}</h1>
+	const overview = p.detail.overview != '' ? p.detail.overview : 'No sinopsis 🥲'
 
-		<div className="relevant">
-			<span>{p.detail.relevantName} {p.detail.relevantIcon} {p.detail.relevantValue}</span>
-			<span>{p.detail.relevantName2} {p.detail.relevantIcon2} {p.detail.relevantValue2}</span>
-		</div>
+	return (
+		<div className="content">
+			<h1 className="title js-detail-title">{p.detail.title}</h1>
 
-		<div className="overview">
-			<p>{p.detail.overview != "" ? p.detail.overview : "No sinopsis 🥲"}</p>
+			<div className="relevant">
+				<span>{p.detail.relevantName} {p.detail.relevantIcon} {p.detail.relevantValue}</span>
+				<span>{p.detail.relevantName2} {p.detail.relevantIcon2} {p.detail.relevantValue2}</span>
+			</div>
+
+			<div className="overview">
+				<p>{overview}</p>
+			</div>
 		</div>
-    </div>
-  );
+	);
 }
 
 export default DetailContent;

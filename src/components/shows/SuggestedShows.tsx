@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Link } from "wouter"
 import { IShows } from "../../services/shows"
 import { Genre } from "../../types/genre"
 import { Show } from "../../types/show"
@@ -7,7 +8,6 @@ import Picture from "../commons/Picture"
 
 interface SuggestedShowsDependencies {
     shows: IShows
-    selectIdShow: any
     genres : Array<Genre>
     // id of the parent show
     idShow : number
@@ -27,15 +27,15 @@ function SuggestedShows(dep: SuggestedShowsDependencies) {
         setLoading(false)
     }
 
+    // define if the element can showed
+    const isNotTheSameShow = (id: number) : string => {
+        return id == dep.idShow ? 'display-none' : ''
+    }
+
     // load shows
 	useEffect(() => {
 		getMovies()
 	}, [])
-
-    // new id show
-	const handleChangeIdShow = (id : number) => {
-		dep.selectIdShow(id)
-	}
 
     return (
         <div className="container">
@@ -48,11 +48,13 @@ function SuggestedShows(dep: SuggestedShowsDependencies) {
                         {   
                             shows.map((s) => {
                                 return (
-                                    <li key={s.id} className={s.id == dep.idShow ? 'display-none' : ''}>
-                                        <div className="suggested-item" onClick={() => handleChangeIdShow(s.id)}>
-                                            <Picture size={185} path={s.poster_path} />
-                                        </div>
-                                    </li>
+                                    <Link key={s.id} to={'/show/' + s.id}> 
+                                        <li key={s.id} className={isNotTheSameShow(s.id)}>
+                                            <div className="suggested-item">
+                                                <Picture size={185} path={s.poster_path} />
+                                            </div>
+                                        </li>
+                                    </Link>
                                 )
                             })
                         }

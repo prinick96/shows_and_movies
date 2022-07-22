@@ -8,8 +8,11 @@ interface VotesProps {
 
 // show the votes average and total votes in detail page of movie/show
 function Votes(props : VotesProps) {
+    const average = props.vote_average?.toFixed(2)
+    const total = props.vote_count?.toLocaleString("en-US")
+
     return (
-        <span className="votes">⭐ {props.vote_average.toFixed(2)} of 10 with {props.vote_count.toLocaleString("en-US")} votes</span>
+        <span className="votes">⭐ {average} of 10 with {total} votes</span>
     )
 }
 

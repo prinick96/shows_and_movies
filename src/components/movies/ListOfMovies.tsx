@@ -16,7 +16,8 @@ function ListOfMovies(p: ListOfMoviesProps) {
         handlePrevItem,
         handleNextItem,
         canShowNextBtn,
-        canShowPrevBtn
+        canShowPrevBtn,
+        className
     } = useCarrousel(p.actualMovie, p.movies.length, p.changeMovie)
     
     return (
@@ -27,8 +28,8 @@ function ListOfMovies(p: ListOfMoviesProps) {
                 {
                     p.movies.map((m, i) => {
                         return (
-                            <li key={m.id} className={p.actualMovie != i ? 'display-none' : ''}>
-                                <div className="show">
+                            <li key={m.id} className={className(i)}>
+                                <div className="movie">
                                     <Picture size={500} path={m.poster_path} />
                                     <ShortInfo title={m.title} vote_average={m.vote_average} />
                                     <Link to={'/movie/' + m.id} className="button">Select Movie</Link>

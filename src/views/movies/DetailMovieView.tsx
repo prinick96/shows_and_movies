@@ -1,7 +1,7 @@
 import { Link, useLocation } from "wouter"
 import { IMovies } from "../../services/movies"
 import Picture from "../../components/commons/Picture"
-import { useCallback, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import Loading from "../../components/commons/Loading"
 import DetailContent from "../../components/commons/DetailContent"
 import Backdrop from "../../components/commons/Backdrop"
@@ -31,6 +31,11 @@ function DetailMovieView(dep: DetailMovieViewDependencies) {
 	// id of current movie
 	const [idMovie, setIdMovie] = useState(dep.id)
 
+	// catch route change
+	if (idMovie != dep.id) {
+		setIdMovie(dep.id)
+	}
+
 	// the current movie
 	const [movie, setMovie] = useState({} as Movie)
 
@@ -46,12 +51,6 @@ function DetailMovieView(dep: DetailMovieViewDependencies) {
 			setLoading(false)
 		}		
     }
-
-	// new id movie
-	const handleChangeIdMovie = useCallback((id : number) => {
-		setLocation('/movie/' + id)
-		setIdMovie(id)
-	}, [])
 
 	// load movie
 	useEffect(() => {
@@ -81,7 +80,7 @@ function DetailMovieView(dep: DetailMovieViewDependencies) {
 						relevantValue: movie.release_date,
 						relevantName2: "Budget",
 						relevantIcon2: "💵",
-						relevantValue2: '$' + movie.budget.toLocaleString("en-US"),
+						relevantValue2: '$' + movie.budget?.toLocaleString("en-US"),
 						overview: movie.overview,
 					}} />
 
@@ -92,7 +91,7 @@ function DetailMovieView(dep: DetailMovieViewDependencies) {
 			</div>
 		
 			{/* it have .container inside */}
-			<SuggestedMovies idMovie={movie.id} genres={movie.genres} movies={dep.movies} selectIdMovie={handleChangeIdMovie} />
+			<SuggestedMovies idMovie={movie.id} genres={movie.genres} movies={dep.movies} />
 		</section>
 	)
 }

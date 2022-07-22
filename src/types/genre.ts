@@ -1,5 +1,5 @@
 // Type for define a movie/show genre
-export type Genre = {
+export interface Genre {
     id : string
     name: string
 } 
