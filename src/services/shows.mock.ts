@@ -1,4 +1,3 @@
-import { Genre } from '../types/genre'
 import { Show } from '../types/show'
 import { IShows } from './shows'
 
@@ -17,7 +16,7 @@ export class ShowsMocked implements IShows {
         return { results : {id : 1} as Show }
     }
 
-    getRelatedShowsByGenres = async (list_of_genres : Array<Genre>) : Promise<any> => {
+    getRelatedShowsByGenres = async (id : number) : Promise<any> => {
         return { 
             results : [
                 { id : 1 }, 

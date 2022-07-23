@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import { Link } from "wouter"
 import { IShows } from "../../services/shows"
-import { Genre } from "../../types/genre"
 import { Show } from "../../types/show"
 import Loading from "../commons/Loading"
 import Picture from "../commons/Picture"
 
 interface SuggestedShowsDependencies {
     shows: IShows
-    genres : Array<Genre>
     // id of the parent show
     idShow : number
 }
@@ -22,7 +20,7 @@ function SuggestedShows(dep: SuggestedShowsDependencies) {
 
     // get the shows
 	const getMovies = async () => {
-        const { results } = await dep.shows.getRelatedShowsByGenres(dep.genres)
+        const { results } = await dep.shows.getRelatedShowsByGenres(dep.idShow)
 		setShows(results.slice(0,8))
         setLoading(false)
     }

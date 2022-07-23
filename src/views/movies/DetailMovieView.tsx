@@ -91,7 +91,7 @@ function DetailMovieView(dep: DetailMovieViewDependencies) {
 			</div>
 		
 			{/* it have .container inside */}
-			<SuggestedMovies idMovie={movie.id} genres={movie.genres} movies={dep.movies} />
+			<SuggestedMovies idMovie={movie.id} movies={dep.movies} />
 		</section>
 	)
 }

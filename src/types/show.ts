@@ -1,5 +1,3 @@
-import { Genre } from "./genre"
-
 export interface Show {
     id : number
     name: string
@@ -10,5 +8,4 @@ export interface Show {
     backdrop_path: string
     first_air_date: string
     last_air_date: string
-    genres: Array<Genre>
 }

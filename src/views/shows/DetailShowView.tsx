@@ -91,7 +91,7 @@ function DetailShowView(dep: DetailShowViewDependencies) {
 			</div>
 			
 			{/* it have .container inside */}
-			<SuggestedShows idShow={show.id} genres={show.genres} shows={dep.shows} />
+			<SuggestedShows idShow={show.id} shows={dep.shows} />
 		</section>
 	)
 }

@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react"
 import { Link } from "wouter"
 import { IMovies } from "../../services/movies"
-import { Genre } from "../../types/genre"
 import { Movie } from "../../types/movie"
 import Loading from "../commons/Loading"
 import Picture from "../commons/Picture"
 
 interface SuggestedMoviesDependencies {
     movies: IMovies
-    genres : Array<Genre>
     // id of the parent movie
     idMovie : number
 }
@@ -22,7 +20,7 @@ function SuggestedMovies(dep: SuggestedMoviesDependencies) {
 
     // get the movies
 	const getMovies = async () => {
-        const { results } = await dep.movies.getRelatedMoviesByGenres(dep.genres)
+        const { results } = await dep.movies.getRelatedMoviesByGenres(dep.idMovie)
 		setMovies(results.slice(0,8))
         setLoading(false)
     }
